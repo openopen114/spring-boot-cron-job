@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <zip destfile="D:\cir\spring-boot-cron-job\target/app.zip">
+    <zipfileset dir="D:\cir\spring-boot-cron-job\target/docker"/>
+    <zipfileset includes="spring-boot-cron-job.jar" dir="D:\cir\spring-boot-cron-job\target"/>
+  </zip>
+</target>
+</project>
