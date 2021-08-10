@@ -48,7 +48,7 @@
                         </resource>
                     </resources>
                     <!-- 3. <fork>true</fork> for devtool hot reload  -->
-                    <fork>true</fork>
+<!--                    <fork>true</fork>-->
                 </configuration>
             </plugin>
             <!-- Copy Dockerfile -->
@@ -272,6 +272,14 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.10</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+
 
 
         <!-- === basic dependency === -->

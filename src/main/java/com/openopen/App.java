@@ -1,26 +1,34 @@
 package com.openopen;
 
 
-import com.openopen.job.MyJob;
-import org.quartz.*;
-import org.quartz.impl.StdSchedulerFactory;
+import com.openopen.model.Person;
+import com.openopen.service.PersonService;
+import org.quartz.SchedulerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static org.quartz.JobBuilder.newJob;
-import static org.quartz.TriggerBuilder.newTrigger;
+import java.sql.SQLException;
 
-
-
-@SpringBootApplication
+//exclude = DataSourceAutoConfiguration.class
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 @RestController
 public class App {
 
     private static final Logger logger = LoggerFactory.getLogger(App.class);
+
+    @Autowired
+    private PersonService personService;
+
+
+
+    Repo repo = new Repo();
+
 
     public static void main(String[] args) throws SchedulerException {
 
@@ -28,7 +36,7 @@ public class App {
         logger.info("=====> App main");
 
 
-
+/*
 
         // [0] Grab the Scheduler instance from the Factory
         Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
@@ -59,14 +67,27 @@ public class App {
         // [3] define the scheduleJob
         scheduler.scheduleJob(myJob, triggerMyJob);
 
-
+*/
 
         SpringApplication.run(App.class, args);
 
     }
 
     @RequestMapping(value = "/")
-    String hello() {
+    String hello() throws SQLException {
+
+        repo.getTest();
+
         return "Hello World!";
     }
+
+
+    @RequestMapping(value = "/id")
+    public Person getPersonByid() {
+
+        logger.info("===> getPersonByid");
+        return personService.getPersonByid();
+    }
+
+
 }
