@@ -2,7 +2,9 @@ package com.openopen;
 
 
 import com.openopen.model.Person;
+import com.openopen.model.Roles;
 import com.openopen.service.PersonService;
+import com.openopen.service.RolesService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.quartz.SchedulerException;
 import org.slf4j.Logger;
@@ -26,6 +28,11 @@ public class App {
 
     @Autowired
     private PersonService personService;
+
+
+    @Autowired
+    private RolesService rolesService;
+
 
 
 
@@ -89,6 +96,14 @@ public class App {
 
         logger.info("===> getPersonByid");
         return personService.getPersonByid();
+    }
+
+
+    @RequestMapping(value = "/roles")
+    public Roles getRolesById() {
+
+        logger.info("===> getRolesById");
+        return rolesService.getRolesById();
     }
 
 

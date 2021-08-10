@@ -16,8 +16,9 @@
             </dataSource>
         </environment>
     </environments>
-    <!-- tb_userinfo 資料表配置 -->
+    <!-- mappers  資料表配置 -->
     <mappers>
         <mapper resource="mapper/PersonMapper.xml"/>
+        <mapper resource="mapper/RolesMapper.xml"/>
     </mappers>
 </configuration>
