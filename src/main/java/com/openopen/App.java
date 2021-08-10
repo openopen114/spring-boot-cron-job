@@ -3,6 +3,7 @@ package com.openopen;
 
 import com.openopen.model.Person;
 import com.openopen.service.PersonService;
+import org.mybatis.spring.annotation.MapperScan;
 import org.quartz.SchedulerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import sql.Druid;
 
 import java.sql.SQLException;
 
@@ -87,6 +89,15 @@ public class App {
 
         logger.info("===> getPersonByid");
         return personService.getPersonByid();
+    }
+
+
+
+    @RequestMapping(value = "/druidInfo")
+    public String druidInfo() {
+
+        logger.info("===> druidInfo");
+        return Druid.getConnectInfo();
     }
 
 

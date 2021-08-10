@@ -2,6 +2,7 @@ package sql;
 
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.pool.DruidPooledConnection;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -153,7 +154,30 @@ public class Druid {
             if(pool == null || pool.isClosed()) {
                 init();
             }
+
             return pool.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+
+
+
+    /**
+     * 链接获取 for MyBatis
+     * @return
+     */
+    public static DruidPooledConnection getDruidPooledConnection() {
+        try {
+            //如果连接池为空或者被异常关闭,则重新初始化一个
+            if(pool == null || pool.isClosed()) {
+                init();
+            }
+
+            return pool.getConnectionDirect(maxWait);
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -12,8 +12,6 @@ public class Person {
 
     private String address;
 
-    private Float salary;
-
     private BigDecimal weight;
 
     private Date dateNoTz;
@@ -50,14 +48,6 @@ public class Person {
 
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
-    }
-
-    public Float getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Float salary) {
-        this.salary = salary;
     }
 
     public BigDecimal getWeight() {

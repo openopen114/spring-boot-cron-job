@@ -1,6 +1,8 @@
 package com.openopen.dao;
 
 import com.openopen.model.Person;
+import org.apache.ibatis.annotations.Mapper;
+
 
 public interface PersonMapper {
     int deleteByPrimaryKey(String id);
